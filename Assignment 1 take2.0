@@ -1,0 +1,65 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "538d896d",
+   "metadata": {},
+   "source": [
+    "# i added two unique Features as i was told in the mail by Umair"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0c0acb05",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "kolonne1 = data[\"Passasjerer_Ombord,\"]\n",
+    "for i in range (len(data[\"Passasjerer_Ombord,\"])):\n",
+    "    if kolonne1[i] < 0:\n",
+    "        kolonne1[i]=kolonne1[i]*-1\n",
+    "        \n",
+    "data[\"Tidspunkt_Faktisk_Ankomst_Holdeplass_Fra\"].fillna(data[\"Tidspunkt_Faktisk_Ankomst_Holdeplass_Fra\"].mode()[0], inplace = True)\n",
+    "\n",
+    "data[\"Antall_Plasser_igjen\"] = data[\"Kjøretøy_Kapasitet\"] - data[\"Passasjerer_Ombord,\"]\n",
+    "\n",
+    "data[\"Fullt_tog\"] = data[\"Antall_Plasser_igjen\"] == 0\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3b33a934",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data = pd.DataFrame(data, dtype='object')\n",
+    "axs = data.plot(subplots=True, figsize=(30, 30));\n",
+    "plt.delaxes(axs[0])"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
